@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Omni Balance Demo
+
+A demo UI showcasing a unified stablecoin management interface. This mockup demonstrates the concept of "Omni Balance" and "Omni Send" - viewing and sending stablecoins across multiple chains as if they were a single unified balance.
+
+**Note: This is a UI demo with hardcoded mock data. No real blockchain connections are made.**
+
+## Features
+
+### Omni Balance View
+- Displays a unified total balance across all stablecoins on all chains
+- Shows breakdown by token and chain:
+  - USDC on Ethereum
+  - USDT on Ethereum
+  - USDC on Polygon
+  - USDC on Arbitrum
+  - DAI on Ethereum
+  - USDT on Solana
+- Clean, modern dark mode interface
+
+### Omni Send
+- Enter any amount to send (up to your total balance)
+- Choose destination token (USDC, USDT, DAI, FRAX)
+- Choose destination chain (Ethereum, Polygon, Arbitrum, Solana, Base, Optimism)
+- Enter recipient address
+- **Preview screen shows:**
+  - Which wallets/chains funds will be pulled from
+  - Token conversions that would be needed
+  - Final amount arriving at destination
+- Success confirmation screen
+
+## Tech Stack
+
+- **Next.js 16** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **React Hooks** - State management
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the demo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── page.tsx        # Main page with tab navigation
+│   ├── layout.tsx      # Root layout
+│   └── globals.css     # Global styles
+├── components/
+│   ├── OmniBalance.tsx # Balance view component
+│   └── OmniSend.tsx    # Send form with preview/confirmation
+└── data/
+    └── mockData.ts     # Mock wallet balances and chain data
+```
 
-## Learn More
+## What This Demo Shows
 
-To learn more about Next.js, take a look at the following resources:
+This demo illustrates the UX concept where:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Users see one balance** - Instead of checking multiple wallets across chains, users see their total stablecoin holdings as a single dollar amount
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Intelligent fund routing** - When sending, the system automatically determines which wallets to pull from and handles any necessary token conversions
 
-## Deploy on Vercel
+3. **Transparency** - Before confirming, users see exactly how their send will be fulfilled (which sources, which conversions)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This approach simplifies the multi-chain stablecoin experience by abstracting away the complexity while maintaining full transparency.
